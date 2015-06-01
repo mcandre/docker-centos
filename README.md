@@ -12,22 +12,11 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:7.0.1406 sh -c 'cat /etc/*release*'
-CentOS Linux release 7.0.1406 (Core)
-NAME="CentOS Linux"
-VERSION="7 (Core)"
-ID="centos"
-ID_LIKE="rhel fedora"
-VERSION_ID="7"
-PRETTY_NAME="CentOS Linux 7 (Core)"
-ANSI_COLOR="0;31"
-CPE_NAME="cpe:/o:centos:centos:7"
-HOME_URL="https://www.centos.org/"
-BUG_REPORT_URL="https://bugs.centos.org/"
-
-CentOS Linux release 7.0.1406 (Core)
-CentOS Linux release 7.0.1406 (Core)
-cpe:/o:centos:centos:7
+docker run --rm mcandre/docker-centos:6.6 sh -c 'cat /etc/*release*'
+CentOS release 6.6 (Final)
+CentOS release 6.6 (Final)
+CentOS release 6.6 (Final)
+cpe:/o:centos:linux:6:GA
 ```
 
 # REQUIREMENTS
