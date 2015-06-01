@@ -12,9 +12,8 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:7.1.1503 sh -c 'cat /etc/*release*'
-CentOS Linux release 7.1.1503 (Core)
-Derived from Red Hat Enterprise Linux 7.1 (Source)
+docker run --rm mcandre/docker-centos:7.0.1406 sh -c 'cat /etc/*release*'
+CentOS Linux release 7.0.1406 (Core)
 NAME="CentOS Linux"
 VERSION="7 (Core)"
 ID="centos"
@@ -26,13 +25,8 @@ CPE_NAME="cpe:/o:centos:centos:7"
 HOME_URL="https://www.centos.org/"
 BUG_REPORT_URL="https://bugs.centos.org/"
 
-CENTOS_MANTISBT_PROJECT="CentOS-7"
-CENTOS_MANTISBT_PROJECT_VERSION="7"
-REDHAT_SUPPORT_PRODUCT="centos"
-REDHAT_SUPPORT_PRODUCT_VERSION="7"
-
-CentOS Linux release 7.1.1503 (Core)
-CentOS Linux release 7.1.1503 (Core)
+CentOS Linux release 7.0.1406 (Core)
+CentOS Linux release 7.0.1406 (Core)
 cpe:/o:centos:centos:7
 ```
 

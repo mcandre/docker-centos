@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-centos:7.1.1503
+IMAGE=mcandre/docker-centos:7.0.1406
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://mirror.centos.org/centos/7.1.1503/os/x86_64/Packages/centos-release-7-1.1503.el7.centos.2.8.x86_64.rpm && \
+wget http://vault.centos.org/7.0.1406/os/x86_64/Packages/centos-release-7-0.1406.el7.centos.2.3.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall "Minimal Install" && \
 cd /chroot && \
