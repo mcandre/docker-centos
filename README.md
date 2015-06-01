@@ -12,8 +12,8 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:5.5 sh -c 'find /etc -type f -name "*release*" | xargs cat'
-CentOS release 5.5 (Final)
+docker run --rm mcandre/docker-centos:5.4 sh -c 'find /etc -type f -name "*release*" | xargs cat'
+CentOS release 5.4 (Final)
 ```
 
 # REQUIREMENTS
