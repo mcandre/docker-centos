@@ -12,11 +12,28 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-Failed:
-  initscripts.x86_64 0:9.49.24-1.el7                                                         iputils.x86_64 0:20121221-6.el7                                                         systemd.x86_64 0:208-20.el7_1.3
+docker run --rm mcandre/docker-centos:latest sh -c 'cat /etc/*release*'
+CentOS Linux release 7.1.1503 (Core)
+Derived from Red Hat Enterprise Linux 7.1 (Source)
+NAME="CentOS Linux"
+VERSION="7 (Core)"
+ID="centos"
+ID_LIKE="rhel fedora"
+VERSION_ID="7"
+PRETTY_NAME="CentOS Linux 7 (Core)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:centos:centos:7"
+HOME_URL="https://www.centos.org/"
+BUG_REPORT_URL="https://bugs.centos.org/"
 
-Complete!
-make: *** [rootfs.tar.gz] Error 1
+CENTOS_MANTISBT_PROJECT="CentOS-7"
+CENTOS_MANTISBT_PROJECT_VERSION="7"
+REDHAT_SUPPORT_PRODUCT="centos"
+REDHAT_SUPPORT_PRODUCT_VERSION="7"
+
+CentOS Linux release 7.1.1503 (Core)
+CentOS Linux release 7.1.1503 (Core)
+cpe:/o:centos:centos:7
 ```
 
 # REQUIREMENTS
@@ -43,7 +60,7 @@ $ sudo yum install docker-io
 
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/)
-* [boot2docker](http://boot2docker.io/)
+* [boot2docker](http://boot2docker.io/) with devicemapper
 
 ### Mac OS X
 
@@ -62,4 +79,12 @@ $ brew install boot2docker
 
 ```
 > chocolatey install docker make
+```
+
+### Enable Device Mapper
+
+```
+$ boot2docker ssh
+docker@boot2docker:~$ echo "EXTRA_ARGS='--storage-driver=devicemapper'" | sudo tee -a /var/lib/boot2docker/profile
+docker@boot2docker:~$ sudo /etc/init.d/docker restart
 ```

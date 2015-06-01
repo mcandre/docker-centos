@@ -14,7 +14,7 @@ endef
 all: run
 
 $(ROOTFS):
-	docker run --rm --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t centos sh -c '$(GENERATE)'
+	docker run --rm --privileged --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t centos sh -c '$(GENERATE)'
 
 build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
