@@ -12,11 +12,8 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:6.0 sh -c 'cat /etc/*release*'
-CentOS Linux release 6.0 (Final)
-CentOS Linux release 6.0 (Final)
-CentOS Linux release 6.0 (Final)
-cpe:/o:centos:linux:6:GA
+docker run --rm mcandre/docker-centos:5.11 sh -c 'find /etc -type f -name "*release*" | xargs cat'
+CentOS release 5.11 (Final)
 ```
 
 # REQUIREMENTS
