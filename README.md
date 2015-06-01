@@ -12,10 +12,10 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:6.5 sh -c 'cat /etc/*release*'
-CentOS release 6.5 (Final)
-CentOS release 6.5 (Final)
-CentOS release 6.5 (Final)
+docker run --rm mcandre/docker-centos:6.4 sh -c 'cat /etc/*release*'
+CentOS release 6.4 (Final)
+CentOS release 6.4 (Final)
+CentOS release 6.4 (Final)
 cpe:/o:centos:linux:6:GA
 ```
 
