@@ -1,10 +1,10 @@
-IMAGE=mcandre/docker-centos:6.2
+IMAGE=mcandre/docker-centos:6.1
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 rpm --root /chroot --initdb && \
-wget http://vault.centos.org/6.2/os/x86_64/Packages/centos-release-6-2.el6.centos.7.x86_64.rpm && \
+wget http://vault.centos.org/6.1/os/x86_64/Packages/centos-release-6-1.el6.centos.6.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall Base && \
 cd /chroot && \
