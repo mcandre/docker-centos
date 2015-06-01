@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-centos:latest
+IMAGE=mcandre/docker-centos:7.1.1503
 ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \

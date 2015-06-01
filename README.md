@@ -12,7 +12,7 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:latest sh -c 'cat /etc/*release*'
+docker run --rm mcandre/docker-centos:7.1.1503 sh -c 'cat /etc/*release*'
 CentOS Linux release 7.1.1503 (Core)
 Derived from Red Hat Enterprise Linux 7.1 (Source)
 NAME="CentOS Linux"
