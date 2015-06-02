@@ -14,13 +14,14 @@ endef
 all: run
 
 $(ROOTFS):
-	docker run --rm --privileged --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t centos sh -c '$(GENERATE)'
+	docker run --rm --privileged --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t centos:5 sh -c '$(GENERATE)'
 
 build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
 	docker run --rm $(IMAGE) sh -c 'find /etc -type f -name "*release*" | xargs cat'
+	docker run --rm $(IMAGE) sh -c 'yum install -y ruby && ruby -v'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
