@@ -7,6 +7,8 @@ rpm --root /chroot --initdb && \
 wget http://vault.centos.org/6.0/os/x86_64/Packages/centos-release-6-0.el6.centos.5.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
 yum -y --nogpgcheck --installroot=/chroot groupinstall Base && \
+cp /mnt/repair-rpm.sh /chroot/repair-rpm.sh && \
+chroot /chroot /repair-rpm.sh && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
@@ -21,6 +23,7 @@ build: Dockerfile $(ROOTFS)
 
 run: clean-containers build
 	docker run --rm $(IMAGE) sh -c 'cat /etc/*release*'
+	docker run --rm $(IMAGE) sh -c 'yum install -y ruby && ruby -v'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
