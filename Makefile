@@ -3,10 +3,19 @@ ROOTFS=rootfs.tar.gz
 define GENERATE
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
+mkdir /chroot/proc && \
+mkdir /chroot/sys && \
+mkdir /chroot/dev && \
+mount -t proc /proc /chroot/proc && \
+mount -t sysfs /sys /chroot/sys && \
+mount -t tmpfs /dev /chroot/dev && \
 rpm --root /chroot --initdb && \
 wget http://mirror.centos.org/centos/5.11/os/x86_64/CentOS/centos-release-5-11.el5.centos.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
-yum -y --nogpgcheck --installroot=/chroot groupinstall Base && \
+yum -y --nogpgcheck --installroot=/chroot --exclude=kernel groupinstall Base && \
+umount /chroot/proc && \
+umount /chroot/sys && \
+umount /chroot/dev && \
 cd /chroot && \
 tar czvf /mnt/rootfs.tar.gz .
 endef
@@ -14,13 +23,14 @@ endef
 all: run
 
 $(ROOTFS):
-	docker run --rm --privileged --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t centos sh -c '$(GENERATE)'
+	docker run --rm --privileged --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t centos:5 sh -c '$(GENERATE)'
 
 build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
 
 run: clean-containers build
 	docker run --rm $(IMAGE) sh -c 'find /etc -type f -name "*release*" | xargs cat'
+	docker run --rm $(IMAGE) sh -c 'yum install -y ruby && ruby -v'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
