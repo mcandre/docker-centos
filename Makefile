@@ -1,8 +1,11 @@
 IMAGE=mcandre/docker-centos:4.9
 ROOTFS=rootfs.tar.gz
 define GENERATE
+setenforce 0; true && \
+cp -r /mnt/yum.repos.d /etc && \
 yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
+mkdir -p /chroot/var/lock/rpm && \
 rpm --root /chroot --initdb && \
 wget http://vault.centos.org/4.9/updates/x86_64/RPMS/centos-release-4-9.1.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
@@ -12,19 +15,18 @@ mkdir /chroot/sys && \
 mkdir /chroot/dev && \
 mount -t proc /proc /chroot/proc && \
 mount -t sysfs /sys /chroot/sys && \
-mount -t tmpfs /dev /chroot/dev && \
-yum -y --nogpgcheck --installroot=/chroot --exclude=kernel groupinstall Base && \
+mount -o rw -t tmpfs /dev /chroot/dev && \
+yum -y --installroot=/chroot --exclude=kernel groupinstall Base && \
 umount /chroot/proc && \
 umount /chroot/sys && \
-umount /chroot/dev && \
 cd /chroot && \
-tar czvf /mnt/rootfs.tar.gz .
+tar --exclude=dev -czvf /mnt/rootfs.tar.gz .
 endef
 
 all: run
 
 $(ROOTFS):
-	docker run --rm --privileged --cap-add=SYS_ADMIN,AUDIT_WRITE -v $$(pwd):/mnt -t centos:5 sh -c '$(GENERATE)'
+	docker run --rm --privileged --cap-add=SYS_ADMIN -v $$(pwd):/mnt -t fatherlinux/centos4-base sh -c '$(GENERATE)'
 
 build: Dockerfile $(ROOTFS)
 	docker build -t $(IMAGE) .
