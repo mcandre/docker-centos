@@ -1,0 +1,73 @@
+# CentOS-Base.repo
+#
+# This file uses a new mirrorlist system developed by the CentOS Team.
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client.  You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the 
+# remarked out baseurl= line instead.
+#
+#
+
+[base]
+name=CentOS-4.9 - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=4.9&arch=$basearch&repo=os
+baseurl=http://vault.centos.org/4.9/os/$basearch/
+gpgcheck=1
+gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
+priority=1
+protect=1
+
+#released updates 
+[update]
+name=CentOS-4.9 - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=4.9&arch=$basearch&repo=updates
+baseurl=http://vault.centos.org/4.9/updates/$basearch/
+gpgcheck=1
+gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
+priority=1
+protect=1
+
+#packages used/produced in the build but not released
+[addons]
+name=CentOS-4.9 - Addons
+#mirrorlist=http://mirrorlist.centos.org/?release=4.9&arch=$basearch&repo=addons
+baseurl=http://vault.centos.org/4.9/addons/$basearch/
+gpgcheck=1
+gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
+priority=1
+protect=1
+
+#additional packages that may be useful
+[extras]
+name=CentOS-4.9 - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=4.9&arch=$basearch&repo=extras
+baseurl=http://vault.centos.org/4.9/extras/$basearch/
+gpgcheck=1
+gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
+priority=1
+protect=1
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-4.9 - Plus
+#mirrorlist=http://mirrorlist.centos.org/?release=4.9&arch=$basearch&repo=centosplus
+baseurl=http://vault.centos.org/4.9/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
+priority=2
+protect=1
+
+#contrib - packages by Centos Users
+[contrib]
+name=CentOS-4.9 - Contrib
+#mirrorlist=http://mirrorlist.centos.org/?release=4.9&arch=$basearch&repo=contrib
+baseurl=http://vault.centos.org/4.9/contrib/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
+priority=2
+protect=1
