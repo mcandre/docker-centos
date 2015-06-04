@@ -12,9 +12,9 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:3.7 sh -c 'find /etc -type f -name "*release*" | xargs cat'
+docker run --rm mcandre/docker-centos:3.6 sh -c 'find /etc -type f -name "*release*" | xargs cat'
 JPackage release 1.5 (%{distribution}) for noarch
-CentOS release 3.7 (Final)
+CentOS release 3.6 (Final)
 LSB_VERSION="1.3"
 ```
 
