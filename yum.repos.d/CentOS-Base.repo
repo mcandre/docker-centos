@@ -12,9 +12,9 @@
 #
 
 [base]
-name=CentOS-4.1 - Base
-#mirrorlist=http://mirrorlist.centos.org/?release=4.1&arch=$basearch&repo=os
-baseurl=http://vault.centos.org/4.1/os/$basearch/
+name=CentOS-4.0 - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=4.0&arch=$basearch&repo=os
+baseurl=http://vault.centos.org/4.0/os/$basearch/
 gpgcheck=1
 gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
 priority=1
@@ -22,9 +22,9 @@ protect=1
 
 #released updates 
 [update]
-name=CentOS-4.1 - Updates
-#mirrorlist=http://mirrorlist.centos.org/?release=4.1&arch=$basearch&repo=updates
-baseurl=http://vault.centos.org/4.1/updates/$basearch/
+name=CentOS-4.0 - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=4.0&arch=$basearch&repo=updates
+baseurl=http://vault.centos.org/4.0/updates/$basearch/
 gpgcheck=1
 gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
 priority=1
@@ -32,9 +32,9 @@ protect=1
 
 #packages used/produced in the build but not released
 [addons]
-name=CentOS-4.1 - Addons
-#mirrorlist=http://mirrorlist.centos.org/?release=4.1&arch=$basearch&repo=addons
-baseurl=http://vault.centos.org/4.1/addons/$basearch/
+name=CentOS-4.0 - Addons
+#mirrorlist=http://mirrorlist.centos.org/?release=4.0&arch=$basearch&repo=addons
+baseurl=http://vault.centos.org/4.0/addons/$basearch/
 gpgcheck=1
 gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
 priority=1
@@ -42,9 +42,9 @@ protect=1
 
 #additional packages that may be useful
 [extras]
-name=CentOS-4.1 - Extras
-#mirrorlist=http://mirrorlist.centos.org/?release=4.1&arch=$basearch&repo=extras
-baseurl=http://vault.centos.org/4.1/extras/$basearch/
+name=CentOS-4.0 - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=4.0&arch=$basearch&repo=extras
+baseurl=http://vault.centos.org/4.0/extras/$basearch/
 gpgcheck=1
 gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
 priority=1
@@ -52,9 +52,9 @@ protect=1
 
 #additional packages that extend functionality of existing packages
 [centosplus]
-name=CentOS-4.1 - Plus
-#mirrorlist=http://mirrorlist.centos.org/?release=4.1&arch=$basearch&repo=centosplus
-baseurl=http://vault.centos.org/4.1/centosplus/$basearch/
+name=CentOS-4.0 - Plus
+#mirrorlist=http://mirrorlist.centos.org/?release=4.0&arch=$basearch&repo=centosplus
+baseurl=http://vault.centos.org/4.0/centosplus/$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4
@@ -63,9 +63,9 @@ protect=1
 
 #contrib - packages by Centos Users
 [contrib]
-name=CentOS-4.1 - Contrib
-#mirrorlist=http://mirrorlist.centos.org/?release=4.1&arch=$basearch&repo=contrib
-baseurl=http://vault.centos.org/4.1/contrib/$basearch/
+name=CentOS-4.0 - Contrib
+#mirrorlist=http://mirrorlist.centos.org/?release=4.0&arch=$basearch&repo=contrib
+baseurl=http://vault.centos.org/4.0/contrib/$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=http://vault.centos.org/RPM-GPG-KEY-centos4

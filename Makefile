@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-centos:4.1
+IMAGE=mcandre/docker-centos:4.0
 ROOTFS=rootfs.tar.gz
 define GENERATE
 setenforce 0; true && \
@@ -7,7 +7,7 @@ yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 mkdir -p /chroot/var/lock/rpm && \
 rpm --root /chroot --initdb && \
-wget http://vault.centos.org/4.1/os/x86_64/CentOS/RPMS/centos-release-4-1.2.x86_64.rpm && \
+wget http://vault.centos.org/4.0/os/x86_64/CentOS/RPMS/centos-release-4-0.1.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
 cp -r /mnt/yum.repos.d /chroot/etc && \
 mkdir /chroot/proc && \
