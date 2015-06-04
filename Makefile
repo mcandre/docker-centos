@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-centos:4.2
+IMAGE=mcandre/docker-centos:4.1
 ROOTFS=rootfs.tar.gz
 define GENERATE
 setenforce 0; true && \
@@ -7,7 +7,7 @@ yum install -y wget tar && \
 mkdir -p /chroot/var/lib/rpm && \
 mkdir -p /chroot/var/lock/rpm && \
 rpm --root /chroot --initdb && \
-wget http://vault.centos.org/4.2/os/x86_64/CentOS/RPMS/centos-release-4-2.1.x86_64.rpm && \
+wget http://vault.centos.org/4.1/os/x86_64/CentOS/RPMS/centos-release-4-1.2.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
 cp -r /mnt/yum.repos.d /chroot/etc && \
 mkdir /chroot/proc && \
@@ -19,6 +19,7 @@ mount -o rw -t tmpfs /dev /chroot/dev && \
 yum -y --installroot=/chroot --exclude=kernel --disablerepo=update groupinstall Base && \
 umount /chroot/proc && \
 umount /chroot/sys && \
+rm -rf /chroot/var/log/* && \
 cd /chroot && \
 tar --exclude=dev -czvf /mnt/rootfs.tar.gz .
 endef
@@ -33,7 +34,7 @@ build: Dockerfile $(ROOTFS)
 
 run: clean-containers build
 	docker run --rm $(IMAGE) sh -c 'find /etc -type f -name "*release*" | xargs cat'
-	docker run --rm $(IMAGE) sh -c 'yum install -y ruby && ruby -v'
+	docker run --rm $(IMAGE) sh -c 'yum -y install ruby && ruby -v'
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f
