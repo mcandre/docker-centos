@@ -12,9 +12,9 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:4.4 sh -c 'find /etc -type f -name "*release*" | xargs cat'
+docker run --rm mcandre/docker-centos:4.3 sh -c 'find /etc -type f -name "*release*" | xargs cat'
 JPackage release 1.6 (CentOS-4) for noarch
-CentOS release 4.4 (Final)
+CentOS release 4.3 (Final)
 ```
 
 # REQUIREMENTS
