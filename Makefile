@@ -1,4 +1,4 @@
-IMAGE=mcandre/docker-centos:3.5
+IMAGE=mcandre/docker-centos:3.4
 ROOTFS=rootfs.tar.gz
 define GENERATE
 cp -r /mnt/yum.conf /etc && \
@@ -9,7 +9,7 @@ yum -y install wget && \
 mkdir -p /chroot/var/lib/rpm && \
 mkdir -p /chroot/var/lock/rpm && \
 rpm --root /chroot --initdb && \
-wget http://vault.centos.org/3.5/os/x86_64/RedHat/RPMS/centos-release-3-5.3.x86_64.rpm && \
+wget http://vault.centos.org/3.4/os/x86_64/RedHat/RPMS/centos-release-3-4.2.x86_64.rpm && \
 rpm --root /chroot -ivh --nodeps centos-release*rpm && \
 rpm --root /chroot --import /usr/share/doc/centos-release-3/RPM-GPG-KEY && \
 rpm --root /chroot --import /usr/share/doc/centos-release-3/RPM-GPG-KEY-CentOS-3 && \
@@ -21,6 +21,9 @@ mount -t proc /proc /chroot/proc && \
 mount -t sysfs /sys /chroot/sys && \
 mount -o rw -t tmpfs /dev /chroot/dev && \
 yum -y --installroot=/chroot --exclude=kernel groupinstall Base && \
+yum -y --installroot=/chroot install db4-utils compat-db && \
+cp /mnt/repair-rpm.sh /chroot/repair-rpm.sh && \
+chroot /chroot /repair-rpm.sh && \
 umount /chroot/proc && \
 umount /chroot/sys && \
 rm -rf /chroot/var/log/* && \
