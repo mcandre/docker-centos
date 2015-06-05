@@ -12,10 +12,9 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:3.3 sh -c 'find /etc -type f -name "*release*" | xargs cat'
-JPackage release 1.5 (%{distribution}) for noarch
-LSB_VERSION="1.3"
-CentOS release 3.9 (Final)
+Getting groups from servers
+No groups provided or accessible on any server.
+Exiting.
 ```
 
 # REQUIREMENTS
