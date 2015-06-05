@@ -13,7 +13,19 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 ```
 $ make
 ...
-Package rpm-libs needs librt.so.1()(64bit), this is not available
+docker run --rm mcandre/docker-centos:2.1 sh -c 'yum -y install ruby && ruby -v'
+rpmdb: /var/lib/rpm/Packages: unsupported hash version: 8
+error: cannot open Packages index using db3 - Invalid argument (22)
+Traceback (innermost last):
+  File "/usr/bin/yum", line 44, in ?
+    yummain.main(sys.argv[1:])
+  File "yummain.py", line 101, in main
+  File "yummain.py", line 58, in parseCmdArgs
+  File "config.py", line 120, in __init__
+  File "config.py", line 169, in _getsysver
+  File "clientStuff.py", line 164, in openrpmdb
+NameError: RpmError
+make: *** [run] Error 1
 ```
 
 # REQUIREMENTS
