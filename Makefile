@@ -1,7 +1,7 @@
 IMAGE=mcandre/docker-centos:2.1
 ROOTFS=rootfs.tar.gz
 define GENERATE
-yum -y install wget setarch && \
+yum -y install wget setarch db4-utils compat-db && \
 mkdir -p /chroot/var/lib/rpm && \
 mkdir -p /chroot/var/lock/rpm && \
 rpm --root /chroot --initdb && \
@@ -16,6 +16,7 @@ mount -o rw -t tmpfs /dev /chroot/dev && \
 cp /mnt/yum.conf /etc && \
 setarch i386 yum -y --installroot=/chroot --exclude=kernel install yum bash && \
 cp /mnt/yum.conf /chroot/etc && \
+/mnt/repair-rpm.sh && \
 umount /chroot/proc && \
 umount /chroot/sys && \
 rm -rf /chroot/var/log/* && \
@@ -33,7 +34,7 @@ build: Dockerfile $(ROOTFS)
 
 run: clean-containers build
 	docker run --rm $(IMAGE) sh -c 'cat /etc/*release*'
-	docker run --rm $(IMAGE) sh -c 'yum -y install ruby && ruby -v'
+	docker run --rm $(IMAGE) sh -c rpm -qa yum
 
 clean-containers:
 	-docker ps -a | grep -v IMAGE | awk '{ print $$1 }' | xargs docker rm -f

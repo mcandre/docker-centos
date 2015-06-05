@@ -7,7 +7,7 @@ repair_db() {
 
   backup="${filename}.orig"
   mv $filename $backup
-  db40_dump $backup | db31_load $filename
+  db_dump $backup | db33_load $filename
   rm $backup
 }
 
