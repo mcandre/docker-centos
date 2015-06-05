@@ -12,9 +12,8 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-Getting groups from servers
-No groups provided or accessible on any server.
-Exiting.
+docker run --rm mcandre/docker-centos:3.3 sh -c 'find /etc -type f -name "*release*" | xargs cat'
+CentOS release 3.3 (rc1)
 ```
 
 # REQUIREMENTS

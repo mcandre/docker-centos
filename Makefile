@@ -20,7 +20,7 @@ mount -t proc /proc /chroot/proc && \
 mount -t sysfs /sys /chroot/sys && \
 mount -o rw -t tmpfs /dev /chroot/dev && \
 cp /mnt/yum.conf /etc && \
-yum -y --installroot=/chroot --exclude=kernel groupinstall Base && \
+yum -y --installroot=/chroot --exclude=kernel install yum bash && \
 wget http://vault.centos.org/3.3/os/x86_64/RedHat/RPMS/db4-utils-4.1.25-8.x86_64.rpm && \
 rpm --root /chroot --nodeps -ivh db4-utils-4.1.25-8.x86_64.rpm && \
 cp /mnt/yum.conf /chroot/etc && \
