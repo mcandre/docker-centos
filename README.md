@@ -12,8 +12,8 @@ https://registry.hub.docker.com/u/mcandre/docker-centos/
 
 ```
 $ make
-docker run --rm mcandre/docker-centos:3.1 sh -c 'find /etc -type f -name "*release*" | xargs cat'
-CentOS release 3.1 (final)
+...
+Package rpm-libs needs librt.so.1()(64bit), this is not available
 ```
 
 # REQUIREMENTS
