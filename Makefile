@@ -19,8 +19,10 @@ mount -t proc /proc /chroot/proc && \
 mount -t sysfs /sys /chroot/sys && \
 mount -o rw -t tmpfs /dev /chroot/dev && \
 yum -y --installroot=/chroot --exclude=kernel groupinstall Base && \
+wget http://vault.centos.org/3.3/3.3/os/x86_64/RedHat/RPMS/db4-utils-4.1.25-8.x86_64.rpm && \
+rpm --root /chroot --nodeps -ivh db4-utils-4.1.25-8.x86_64.rpm && \
 cp -r /mnt/yum.conf /chroot/etc && \
-yum -y --installroot=/chroot install db4-utils compat-db && \
+yum -y --installroot=/chroot install compat-db && \
 cp /mnt/repair-rpm.sh /chroot/repair-rpm.sh && \
 chroot /chroot /repair-rpm.sh && \
 umount /chroot/proc && \
