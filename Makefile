@@ -37,5 +37,10 @@ clean-rootfs:
 
 clean: clean-containers clean-images clean-layers clean-rootfs
 
+dockerlint:
+	$(shell npm bin)/dockerlint
+
+lint: dockerlint
+
 publish:
 	docker push $(IMAGE)
